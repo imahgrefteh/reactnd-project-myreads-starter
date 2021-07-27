@@ -44,6 +44,7 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
+                {/*START OF Currently Reading*/}
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
@@ -87,6 +88,7 @@ class BooksApp extends React.Component {
                     </ol>
                   </div>
                 </div>
+                {/*Start of want to Read*/}
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Want to Read</h2>
                   <div className="bookshelf-books">
@@ -130,6 +132,7 @@ class BooksApp extends React.Component {
                     </ol>
                   </div>
                 </div>
+                {/*Read*/}
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Read</h2>
                   <div className="bookshelf-books">
