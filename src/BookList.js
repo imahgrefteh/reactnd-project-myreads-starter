@@ -2,13 +2,12 @@ import React from "react";
 import BookItem from "./BookItem";
 
 
-
 function BookList(props) {
     return (
         <ol className="books-grid">
             {props.books.map((book) => {
                 return (
-                    <li>
+                    <li key={book.id}>
                         <BookItem
                             url={book.image}
                             title={book.title}
