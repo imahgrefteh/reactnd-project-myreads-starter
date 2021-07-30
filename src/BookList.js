@@ -9,7 +9,7 @@ function BookList(props) {
                 return (
                     <li key={book.id}>
                         <BookItem
-                            url={book.image}
+                            url={book.imageLinks.thumbnail}
                             title={book.title}
                             authors={book.authors.join(", ")}
                         />

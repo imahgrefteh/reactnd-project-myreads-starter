@@ -4,6 +4,10 @@ import {Link} from "react-router-dom";
 import {getAll} from './BooksAPI';
 
 class BookShelf extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
     componentDidMount() {
         getAll().then(books => this.separateBooks(books));
@@ -12,9 +16,16 @@ class BookShelf extends Component {
     separateBooks = (books) => {
         console.log('books', books)
         const currentlyReadingBooks = books.filter(book => book.shelf === 'currentlyReading');
-        const wantToReadBooks = books.filter(book => book.shelf ==='wantToRead');
+        const wantToReadBooks = books.filter(book => book.shelf === 'wantToRead');
         const readBooks = books.filter(book => book.shelf === 'read');
-        //const result = words.filter(word => word.length > 6);
+
+        this.setState({
+            books: [
+                {shelf: 'currentlyReadingBooks', bookCollection: currentlyReadingBooks},
+                {shelf: 'wantToRead', bookCollection: wantToReadBooks},
+                {shelf: 'read', bookCollection: readBooks}
+            ]
+        })
     }
 
     render() {
@@ -27,7 +38,10 @@ class BookShelf extends Component {
                 <div className="list-books-content">
                     <div>
                         {/*START OF Currently Reading*/}
-                        <Shelf Title="Currently Reading"/>
+                        {this.state.books && this.state.books.length > 0 &&
+                        <Shelf books={this.state.books[0].bookCollection} Title="Currently Reading"/>
+                        }
+
                         {/*Start of want to Read*/}
                         <div className="bookshelf">
                             <h2 className="bookshelf-title">Want to Read</h2>
