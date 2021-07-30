@@ -16,7 +16,6 @@ function BookList(props) {
                     </li>
                 );
             })}
-            }
         </ol>
     );
 }
