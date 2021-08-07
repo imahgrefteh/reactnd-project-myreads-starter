@@ -18,12 +18,13 @@ class BookShelf extends Component {
         const currentlyReadingBooks = books.filter(book => book.shelf === 'currentlyReading');
         const wantToReadBooks = books.filter(book => book.shelf === 'wantToRead');
         const readBooks = books.filter(book => book.shelf === 'read');
+       // const reffadBooks = books.filter(book => console.log('shefl' + book.shelf ));
 
         this.setState({
             books: [
                 {shelf: 'currentlyReadingBooks', bookCollection: currentlyReadingBooks, title: 'Currently Reading'},
                 {shelf: 'wantToRead', bookCollection: wantToReadBooks, title: 'Want to Read'},
-                {shelf: 'read', bookCollection: readBooks, title: 'Read'}
+                {shelf: 'read', bookCollection: readBooks, title: 'Read'} // to do add other or x number of shelfs.
             ]
         })
     }
@@ -38,7 +39,7 @@ class BookShelf extends Component {
                 <div className="list-books-content">
                     <div>
                         {this.state.books && this.state.books.length > 0 && this.state.books.map((book) => {
-                            return (<Shelf books={book.bookCollection} Title={book.title}/>);
+                            return (<Shelf key={book.id} books={book.bookCollection} Title={book.title}/>);
                         })}
                     </div>
                 </div>

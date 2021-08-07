@@ -12,6 +12,7 @@ function BookList(props) {
                             url={book.imageLinks.thumbnail}
                             title={book.title}
                             authors={book.authors.join(", ")}
+                            id ={book.id}
                         />
                     </li>
                 );
