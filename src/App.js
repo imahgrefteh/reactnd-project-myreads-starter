@@ -6,10 +6,8 @@ import BookShelf from "./BookShelf";
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 class BooksApp extends React.Component {
-    state = {}
 
-
-
+    // TODO: figure out how to rerender after an update.
     render() {
         return (
             <div className="app">

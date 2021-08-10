@@ -26,7 +26,7 @@ class BookShelf extends Component {
                 {shelf: 'wantToRead', bookCollection: wantToReadBooks, title: 'Want to Read'},
                 {shelf: 'read', bookCollection: readBooks, title: 'Read'} // to do add other or x number of shelfs.
             ]
-        })
+        });
     }
 
     render() {

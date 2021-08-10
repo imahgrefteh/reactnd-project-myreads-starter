@@ -1,4 +1,5 @@
 import React from "react";
+import {update} from "./BooksAPI";
 
 export const options = [
     {value: 'move', label: 'Move to...'},
@@ -14,19 +15,17 @@ class BookShelfChanger extends React.Component {
     constructor(props) {
         super(props);
         this.book = {id: this.props.id}
-        this.state = {value: 'coconut'};
+        this.state = {};
     }
 
 
     handleChange = (e) => {
-        console.log('select stae', e.target.value)
-        console.log('bookID', this.book);
-        this.setState({selectValue: e.target.value});
-        // 1. need to get book ID.
-        // 2. need new shelf.
-        //console.log("book", this.book, this.state.selectValue);
-        //  update(this.book, e.target.value).then((value => window.location.reload(false)))
-        //update(this.book, e.target.value);
+        const shelf = e.target.value;
+        this.setState({selectValue: shelf});
+        if(shelf ==="none" || shelf ==="move"){
+            return;
+        }
+        update(this.book, e.target.value).then((value => window.location.reload(true)));
     }
 
     function

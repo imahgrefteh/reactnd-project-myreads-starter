@@ -11,8 +11,8 @@ function BookList(props) {
                         <BookItem
                             url={book.imageLinks.thumbnail}
                             title={book.title}
-                            authors={book.authors.join(", ")}
-                            id ={book.id}
+                            authors={book.authors ? book.authors.join(", ") : ""}
+                            id={book.id}
                         />
                     </li>
                 );

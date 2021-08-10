@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import {search} from "./BooksAPI"
+import Shelf from "./Shelf";
 
 class Search extends Component {
     constructor(props) {
@@ -11,7 +12,11 @@ class Search extends Component {
     handleChange = (event) => {
         const searchTerm = event.target.value;
         if (searchTerm) {
-            search(searchTerm).then(books => console.log('books', books));
+            search(searchTerm).then(books => this.setState({
+                books: [
+                    {shelf: 'Search', bookCollection: books.items ? [] : books, title: 'Search'}
+                ]
+            }));
         }
         this.setState({value: event.target.value});
         //console.log('books', this.state.books);
@@ -25,14 +30,6 @@ class Search extends Component {
                         <button className="close-search">Close</button>
                     </Link>
                     <div className="search-books-input-wrapper">
-                        {/*
-                  NOTES: The search from BooksAPI is limited to a particular set of search terms.
-                  You can find these search terms here:
-                  https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-                  However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-                  you don't find a specific author or title. Every search is limited by search terms.
-                */}
                         <input type="text" placeholder="Search by title or author" value={this.state.value}
                                onChange={this.handleChange}/>
 
@@ -40,6 +37,11 @@ class Search extends Component {
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid"/>
+                    <div>
+                        {this.state.books && this.state.books.length > 0 && this.state.books.map((book) => {
+                            return (<Shelf key={book.id} books={book.bookCollection} Title={book.title}/>);
+                        })} && {<h3>No results found</h3>}
+                    </div>
                 </div>
             </div>
         );
