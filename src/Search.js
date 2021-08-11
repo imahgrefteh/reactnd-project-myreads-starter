@@ -40,7 +40,7 @@ class Search extends Component {
                     <div>
                         {this.state.books && this.state.books.length > 0 && this.state.books.map((book) => {
                             return (<Shelf key={book.id} books={book.bookCollection} Title={book.title}/>);
-                        })} && {<h3>No results found</h3>}
+                        })}
                     </div>
                 </div>
             </div>

@@ -15,7 +15,7 @@ class BookShelfChanger extends React.Component {
     constructor(props) {
         super(props);
         this.book = {id: this.props.id}
-        this.state = {};
+        this.state = {isaac:this.props.id};
     }
 
 
