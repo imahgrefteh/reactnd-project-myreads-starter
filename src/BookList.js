@@ -13,6 +13,7 @@ function BookList(props) {
                             title={book.title}
                             authors={book.authors ? book.authors.join(", ") : ""}
                             id={book.id}
+                            shelf={book.shelf}
                         />
                     </li>
                 );

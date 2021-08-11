@@ -9,7 +9,7 @@ function BookItem(props) {
             <div className="book-top">
                 <BookImage
                     url={props.url}/>
-                <BookShelfChanger id = {props.id}/>
+                <BookShelfChanger id = {props.id} shelf={props.shelf}/>
             </div>
             <BookTitle title={props.title} authors={props.authors}/>
         </div>
