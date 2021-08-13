@@ -6,6 +6,7 @@ import {getAll} from './BooksAPI';
 class BookShelf extends Component {
     constructor(props) {
         super(props);
+      //  console.log('books', props.books)
         this.state = {};
     }
 
@@ -14,11 +15,10 @@ class BookShelf extends Component {
     }
 
     separateBooks = (books) => {
-        console.log('books', books)
+
         const currentlyReadingBooks = books.filter(book => book.shelf === 'currentlyReading');
         const wantToReadBooks = books.filter(book => book.shelf === 'wantToRead');
         const readBooks = books.filter(book => book.shelf === 'read');
-       // const reffadBooks = books.filter(book => console.log('shefl' + book.shelf ));
 
         this.setState({
             books: [

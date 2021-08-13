@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
-import {search} from "./BooksAPI"
+import {searchWithShelf} from "./BooksAPI"
 import Shelf from "./Shelf";
 
 class Search extends Component {
@@ -12,14 +12,16 @@ class Search extends Component {
     handleChange = (event) => {
         const searchTerm = event.target.value;
         if (searchTerm) {
-            search(searchTerm).then(books => this.setState({
+            searchWithShelf(searchTerm).then(books => this.setState({
                 books: [
-                    {shelf: 'Search', bookCollection: books.items ? [] : books, title: 'Search'}
+                    {shelf: 'Search', bookCollection: books, title: 'Search'}
                 ]
             }));
         }
         this.setState({value: event.target.value});
-        //console.log('books', this.state.books);
+
+        window.isaac = this.state.books;
+        console.log('what i am lookgin for', JSON.stringify(this.state.books));
     }
 
     render() {
@@ -38,9 +40,15 @@ class Search extends Component {
                 <div className="search-books-results">
                     <ol className="books-grid"/>
                     <div>
-                        {this.state.books && this.state.books.length > 0 && this.state.books.map((book) => {
-                            return (<Shelf key={book.id} books={book.bookCollection} Title={book.title}/>);
-                        })}
+                        {this.state.books && this.state.books[0].bookCollection && this.state.books[0].bookCollection.length > 0  ? (
+                            this.state.books.map((book) => {
+                                return <Shelf key={book.id} books={book.bookCollection} Title={book.title}/>;
+                            })
+                        ) : (
+                            <div>
+                                No results found for {this.state.value}
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

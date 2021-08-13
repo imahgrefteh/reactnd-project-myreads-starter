@@ -6,18 +6,21 @@ import BookShelf from "./BookShelf";
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 class BooksApp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
-    // TODO: figure out how to rerender after an update.
     render() {
         return (
             <div className="app">
                 <BrowserRouter>
                     <Switch>
                         <Route exact path="/search">
-                            <Search/>
+                            <Search bookShelf={this.state.books}/>
                         </Route>
                         <Route path="/">
-                            <BookShelf/>
+                            <BookShelf bookShelf={this.state.books}/>
                         </Route>
                     </Switch>
                 </BrowserRouter>
