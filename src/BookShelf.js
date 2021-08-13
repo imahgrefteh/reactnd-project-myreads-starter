@@ -6,7 +6,6 @@ import {getAll} from './BooksAPI';
 class BookShelf extends Component {
     constructor(props) {
         super(props);
-      //  console.log('books', props.books)
         this.state = {};
     }
 

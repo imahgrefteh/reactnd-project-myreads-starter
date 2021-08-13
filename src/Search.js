@@ -13,15 +13,10 @@ class Search extends Component {
         const searchTerm = event.target.value;
         if (searchTerm) {
             searchWithShelf(searchTerm).then(books => this.setState({
-                books: [
-                    {shelf: 'Search', bookCollection: books, title: 'Search'}
-                ]
+                books: {shelf: 'Search', bookCollection: books, title: 'Search'}
             }));
         }
         this.setState({value: event.target.value});
-
-        window.isaac = this.state.books;
-        console.log('what i am lookgin for', JSON.stringify(this.state.books));
     }
 
     render() {
@@ -40,13 +35,12 @@ class Search extends Component {
                 <div className="search-books-results">
                     <ol className="books-grid"/>
                     <div>
-                        {this.state.books && this.state.books[0].bookCollection && this.state.books[0].bookCollection.length > 0  ? (
-                            this.state.books.map((book) => {
-                                return <Shelf key={book.id} books={book.bookCollection} Title={book.title}/>;
-                            })
+                        {this.state.books && this.state.books.bookCollection && this.state.books.bookCollection.length > 0 ? (
+                            <Shelf key={"sfsf"} books={this.state.books.bookCollection} Title={this.state.books.title}/>
                         ) : (
                             <div>
-                                No results found for {this.state.value}
+                                {this.state.books ? <div>No results found for {this.state.value} </div> :
+                                    <div>please enter Search</div>}
                             </div>
                         )}
                     </div>

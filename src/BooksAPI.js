@@ -57,7 +57,6 @@ export const searchWithShelf = async (query) => {
             map[obj.id] = obj.shelf;
             return map;
         }, {});
-       // console.log('searchedBooks', searchedBooks);
         return searchedBooks.map(obj => ({...obj, shelf: idToShelf[obj.id]}))
     })
 }
