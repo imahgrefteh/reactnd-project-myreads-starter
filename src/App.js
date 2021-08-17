@@ -4,7 +4,7 @@ import Search from "./Search";
 import BookShelf from "./BookShelf";
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
-class BooksApp extends React.Component {
+class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -28,4 +28,4 @@ class BooksApp extends React.Component {
     }
 }
 
-export default BooksApp
+export default App

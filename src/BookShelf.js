@@ -38,7 +38,7 @@ class BookShelf extends Component {
                 <div className="list-books-content">
                     <div>
                         {this.state.books && this.state.books.length > 0 && this.state.books.map((book) => {
-                            return (<Shelf key={book.id} books={book.bookCollection} Title={book.title}/>);
+                            return (<Shelf key={book.title} books={book.bookCollection} Title={book.title}/>);
                         })}
                     </div>
                 </div>

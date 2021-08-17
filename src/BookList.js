@@ -9,7 +9,9 @@ function BookList(props) {
                 return (
                     <li key={book.id}>
                         <BookItem
-                            url={book.imageLinks.thumbnail}
+                            book={book} // if this works should we change eveyrhitng.
+                            key={book.id + book.title}
+                            url={book.imageLinks ? book.imageLinks.thumbnail : null}
                             title={book.title}
                             authors={book.authors ? book.authors.join(", ") : ""}
                             id={book.id}

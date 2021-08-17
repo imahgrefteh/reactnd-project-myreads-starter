@@ -48,7 +48,7 @@ export const searchWithShelf = async (query) => {
     return Promise.all([searchedBooksFunc, booksOnShelfFunc]).then((values) => {
         const searchedBooks = values[0];
 
-        if (searchedBooks.error) {
+        if (searchedBooks == null || searchedBooks.error) {
             return [];
         }
 
@@ -57,6 +57,6 @@ export const searchWithShelf = async (query) => {
             map[obj.id] = obj.shelf;
             return map;
         }, {});
-        return searchedBooks.map(obj => ({...obj, shelf: idToShelf[obj.id]}))
+        return searchedBooks.map(obj => ({...obj, shelf: idToShelf[obj.id] ? idToShelf[obj.id] : "none"}))
     })
 }

@@ -11,11 +11,9 @@ class Search extends Component {
 
     handleChange = (event) => {
         const searchTerm = event.target.value;
-        if (searchTerm) {
-            searchWithShelf(searchTerm).then(books => this.setState({
-                books: {shelf: 'Search', bookCollection: books, title: 'Search'}
-            }));
-        }
+        searchWithShelf(searchTerm).then(books => this.setState({
+            books: {shelf: 'Search', bookCollection: books, title: 'Search'}
+        }));
         this.setState({value: event.target.value});
     }
 
