@@ -3,18 +3,42 @@ import Shelf from "./Shelf";
 import {Link} from "react-router-dom";
 import {getAll} from './BooksAPI';
 
+// const SHELVES = [
+//     {
+//         title: 'Currently Reading',
+//         id: 'currentlyReading'
+//     },
+//     {
+//         title: 'Want To Read',
+//         id: 'wantToRead'
+//     },
+//     {
+//         title: 'Read',
+//         id: 'read'
+//     }
+// ];
+
 class BookShelf extends Component {
+
+
     constructor(props) {
         super(props);
         this.state = {};
+        this.getAllBooksCall = this.getAllBooksCall.bind(this);
     }
 
-    componentDidMount() {
+    getAllBooksCall = () => {
+        console.log("get all books is being called")
         getAll().then(books => this.separateBooks(books));
     }
 
-    separateBooks = (books) => {
+    componentDidMount() {
+        this.getAllBooksCall();
+    }
 
+
+    separateBooks = (books) => {
+        // const bookInShelves = [];
         const currentlyReadingBooks = books.filter(book => book.shelf === 'currentlyReading');
         const wantToReadBooks = books.filter(book => book.shelf === 'wantToRead');
         const readBooks = books.filter(book => book.shelf === 'read');
@@ -38,7 +62,8 @@ class BookShelf extends Component {
                 <div className="list-books-content">
                     <div>
                         {this.state.books && this.state.books.length > 0 && this.state.books.map((book) => {
-                            return (<Shelf key={book.title} books={book.bookCollection} Title={book.title}/>);
+                            return (<Shelf key={book.title} getAllBooksCall={this.getAllBooksCall.bind(this)}
+                                           books={book.bookCollection} Title={book.title}/>);
                         })}
                     </div>
                 </div>

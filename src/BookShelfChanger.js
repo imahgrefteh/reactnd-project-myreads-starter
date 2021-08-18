@@ -11,25 +11,15 @@ export const options = [
 
 class BookShelfChanger extends React.Component {
 
-
     constructor(props) {
         super(props);
         this.book = {id: this.props.id}
     }
 
-    updateBookShelf = (result) => {
-      //  this.setState({book: this.props.book});
-        const id = this.book.id;
-        this.props.book.shelf = "none"
-        console.log('props.book', this.props.book);
-        console.log('result', result);
-        this.setState({});
-    }
-
     handleChange = (e) => {
         const shelf = e.target.value;
         this.setState({selectValue: shelf});
-        update(this.book, e.target.value).then(result => this.updateBookShelf(result));
+        update(this.book, e.target.value).then(this.props.getAllBooksCall(''));
     }
 
     function

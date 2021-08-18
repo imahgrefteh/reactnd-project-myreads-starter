@@ -9,12 +9,15 @@ class Search extends Component {
         this.state = {value: ''};
     }
 
-    handleChange = (event) => {
-        const searchTerm = event.target.value;
+    soemthing = (searchTerm) => {
         searchWithShelf(searchTerm).then(books => this.setState({
             books: {shelf: 'Search', bookCollection: books, title: 'Search'}
         }));
-        this.setState({value: event.target.value});
+        this.setState({value: searchTerm});
+    }
+
+    handleChange = (event) => {
+        this.soemthing(event.target.value);
     }
 
     render() {
@@ -33,14 +36,16 @@ class Search extends Component {
                 <div className="search-books-results">
                     <ol className="books-grid"/>
                     <div>
-                        {this.state.books && this.state.books.bookCollection && this.state.books.bookCollection.length > 0 ? (
-                            <Shelf key={"sfsf"} books={this.state.books.bookCollection} Title={this.state.books.title}/>
-                        ) : (
-                            <div>
-                                {this.state.books ? <div>No results found for {this.state.value} </div> :
-                                    <div>please enter Search</div>}
-                            </div>
-                        )}
+                        {this.state.books && this.state.books.bookCollection && this.state.books.bookCollection.length > 0 ?
+                            (
+                                <Shelf key={"sfsf"} books={this.state.books.bookCollection}
+                                       Title={this.state.books.title} getAllBooksCall={this.soemthing}/>
+                            ) : (
+                                <div>
+                                    {this.state.books ? <div>No results found for {this.state.value} </div> :
+                                        <div>please enter Search</div>}
+                                </div>
+                            )}
                     </div>
                 </div>
             </div>

@@ -9,7 +9,8 @@ function BookList(props) {
                 return (
                     <li key={book.id}>
                         <BookItem
-                            book={book} // if this works should we change eveyrhitng.
+                            getAllBooksCall={props.getAllBooksCall}
+                            book={book} // remove not needed.
                             key={book.id + book.title}
                             url={book.imageLinks ? book.imageLinks.thumbnail : null}
                             title={book.title}
