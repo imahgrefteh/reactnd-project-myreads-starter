@@ -19,7 +19,7 @@ class BookShelfChanger extends React.Component {
     handleChange = (e) => {
         const shelf = e.target.value;
         this.setState({selectValue: shelf});
-        update(this.book, e.target.value).then(this.props.getAllBooksCall(''));
+        update(this.book, e.target.value).then(() => this.props.getAllBooksCall(''));
     }
 
     function
