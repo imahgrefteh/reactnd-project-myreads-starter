@@ -28,7 +28,6 @@ class BookShelf extends Component {
     }
 
     getAllBooksCall = () => {
-        console.log("get all books is being called")
         getAll().then(books => this.separateBooks(books));
     }
 
